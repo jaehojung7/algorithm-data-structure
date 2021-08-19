@@ -1,29 +1,21 @@
 # https://www.acmicpc.net/problem/11279 최대힙
 
-# 우선순위 큐 힙 정렬
 import sys
 import heapq
 input = sys.stdin.readline
 
-def heapsort(iterable):
-    h = []
-    result = []
-
-    for value in iterable:
-        heapq.heappush(h, value)
-
-    for i in range(len(h)):
-        result.append(heapq.heappop(h))
-    return result
-
 n = int(input())
-input_arr = []
+heap = []
 
-for i in range(n):
-    input_arr.append(int(input()))
-
-answer = heapsort(input_arr)
-
-for i in range(n):
-    print(answer[i])
-
+for _ in range(n):
+    num = int(input())
+    if num == 0:
+        # 힙이 비어 있지 않으면 최대값을 출력하고 힙에서 제거
+        if heap:
+            print(-(heapq.heappop(heap)))
+        # 힙이 비어 있으면 0 출력
+        else:
+            print(0)
+    else:
+        # 자연수를 입력하면 힙에 추가
+        heapq.heappush(heap, -num)
