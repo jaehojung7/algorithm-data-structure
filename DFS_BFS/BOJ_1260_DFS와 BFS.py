@@ -5,8 +5,8 @@ input = sys.stdin.readline
 from collections import deque
 
 def dfs(graph, v, visited):
-    graph[v].sort()
     visited[v] = True
+    graph[v].sort()
     print(v, end = ' ')
 
     for i in graph[v]:
@@ -14,13 +14,13 @@ def dfs(graph, v, visited):
             dfs(graph, i, visited)
 
 def bfs(graph, v, visited):
-    graph[v].sort()
     queue = deque([v])
     visited[v] = True
     
     while queue:
         v = queue.popleft()
         print(v, end = ' ')
+        graph[v].sort()
         
         for i in graph[v]:
             if not visited[i]:
@@ -34,7 +34,6 @@ for _ in range(m):
     x,y = map(int,input().split())
     graph[x].append(y)
     graph[y].append(x)
-print(graph)
 
 visited_dfs = [0] * len(graph)
 visited_bfs = [0] * len(graph)
