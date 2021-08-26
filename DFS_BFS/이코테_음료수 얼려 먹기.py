@@ -2,9 +2,7 @@ import sys
 input = sys.stdin.readline
 
 n,m = map(int, input().split())
-graph = []
-for i in range(n):
-    graph.append(list(map(int, input().rstrip())))
+graph = [list(map(int, input().rstrip())) for i in range(n)]
 
 
 def dfs(x,y):
